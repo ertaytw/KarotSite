@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - KarotPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'carrot-orange': '#FF6B35',
+                        'carrot-green': '#4A5D23',
+                        'carrot-light': '#FFE5D9'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-carrot-orange rounded-full flex items-center justify-center">
+                        <i class="fas fa-hammer text-white text-lg"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-carrot-green">KarotPro</h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Anasayfa</a>
+                    <a href="hakkimizda.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Hakkımızda</a>
+                    <a href="hizmetler.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Hizmetler</a>
+                    <a href="projeler.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Projeler</a>
+                    <a href="iletisim.html" class="text-carrot-orange font-semibold border-b-2 border-carrot-orange">İletişim</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Anasayfa</a>
+                <a href="hakkimizda.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Hakkımızda</a>
+                <a href="hizmetler.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Hizmetler</a>
+                <a href="projeler.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Projeler</a>
+                <a href="iletisim.html" class="block py-2 text-carrot-orange font-semibold">İletişim</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-carrot-orange to-orange-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">İletişim</h1>
+            <p class="text-xl text-carrot-light">Projeleriniz için hemen iletişime geçin</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-carrot-light rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-carrot-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">Telefon</h3>
+                    <p class="text-gray-700 mb-2">Sabit Hat</p>
+                    <a href="tel:02125550123" class="text-carrot-orange font-semibold hover:underline">0212 555 0123</a>
+                    <p class="text-gray-700 mb-2 mt-3">Mobil</p>
+                    <a href="tel:05355550123" class="text-carrot-orange font-semibold hover:underline">0535 555 0123</a>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-carrot-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">E-posta</h3>
+                    <p class="text-gray-700 mb-2">Genel</p>
+                    <a href="mailto:info@karotpro.com" class="text-carrot-orange font-semibold hover:underline">info@karotpro.com</a>
+                    <p class="text-gray-700 mb-2 mt-3">Teklif</p>
+                    <a href="mailto:teklif@karotpro.com" class="text-carrot-orange font-semibold hover:underline">teklif@karotpro.com</a>
+                </div>
+                
+                <div class="text-center p-6 bg-blue-50 rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">Adres</h3>
+                    <p class="text-gray-700">Atatürk Mahallesi<br>İnşaat Caddesi No: 45<br>Pamukkale/Denizli</p>
+                    <p class="text-gray-600 text-sm mt-2">20100 Türkiye</p>
+                </div>
+                
+                <div class="text-center p-6 bg-green-50 rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">Çalışma Saatleri</h3>
+                    <p class="text-gray-700 mb-1">Pazartesi - Cuma</p>
+                    <p class="text-carrot-orange font-semibold">08:00 - 18:00</p>
+                    <p class="text-gray-700 mb-1 mt-2">Cumartesi</p>
+                    <p class="text-carrot-orange font-semibold">09:00 - 16:00</p>
+                    <p class="text-red-600 text-sm mt-2">Acil durumlar: 7/24</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-carrot-green mb-6">Teklif Talep Formu</h3>
+                    <p class="text-gray-600 mb-6">Projeleriniz için detaylı bilgi verin, size en uygun teklifi sunalım.</p>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Ad Soyad *</label>
+                                <input type="text" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Telefon *</label>
+                                <input type="tel" name="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">E-posta *</label>
+                                <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Şehir</label>
+                                <input type="text" name="city" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Hizmet Türü</label>
+                            <select name="service" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                                <option value="">Seçiniz</option>
+                                <option value="beton-karot">Beton Karot</option>
+                                <option value="duvar-karot">Duvar Karot</option>
+                                <option value="zemin-karot">Zemin Karot</option>
+                                <option value="sulu-karot">Sulu Karot</option>
+                                <option value="acil-servis">Acil Servis</option>
+                                <option value="danismanlik">Proje Danışmanlığı</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Karot Çapı (cm)</label>
+                                <input type="number" name="diameter" placeholder="Örn: 20" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Derinlik (cm)</label>
+                                <input type="number" name="depth" placeholder="Örn: 50" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Adet</label>
+                                <input type="number" name="quantity" placeholder="Örn: 10" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Proje Detayları</label>
+                            <textarea name="message" rows="4" placeholder="Projeniz hakkında detaylı bilgi verin..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent resize-none"></textarea>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="privacy" name="privacy" required class="mr-3">
+                            <label for="privacy" class="text-gray-700 text-sm">
+                                <a href="#" class="text-carrot-orange hover:underline">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-carrot-orange text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-600 transform hover:scale-105 transition duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>Teklif Talep Et
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Map & Additional Info -->
+                <div class="space-y-8">
+                    <!-- Map -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-carrot-green mb-4">Ofis Lokasyonu</h3>
+                        <div class="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <div class="text-center text-gray-600">
+                                <i class="fas fa-map-marker-alt text-4xl text-carrot-orange mb-2"></i>
+                                <p class="font-semibold">KarotPro Ofisi</p>
+                                <p class="text-sm">Atatürk Mah. İnşaat Cad. No:45</p>
+                                <p class="text-sm">Pamukkale/Denizli</p>
+                                <a href="https://maps.google.com" target="_blank" class="text-carrot-orange hover:underline text-sm mt-2 inline-block">
+                                    Google Maps'te Görüntüle
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Contact -->
+                    <div class="bg-red-50 p-6 rounded-lg border-2 border-red-200">
+                        <h3 class="text-xl font-bold text-red-700 mb-4">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>Acil Durum İletişim
+                        </h3>
+                        <p class="text-gray-700 mb-4">7/24 acil karot delim hizmetleri için:</p>
+                        <div class="space-y-2">
+                            <a href="tel:05355550123" class="flex items-center text-red-600 font-semibold hover:underline">
+                                <i class="fas fa-phone mr-3"></i>0535 555 0123
+                            </a>
+                            <a href="mailto:acil@karotpro.com" class="flex items-center text-red-600 font-semibold hover:underline">
+                                <i class="fas fa-envelope mr-3"></i>acil@karotpro.com
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Acil durumlarda ortalama müdahale süresi: 2 saat</p>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-carrot-green mb-4">Sosyal Medya</h3>
+                        <p class="text-gray-600 mb-4">Güncel projelerimizi ve duyurularımızı takip edin:</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition duration-300">
+                                <i class="fab fa-facebook text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition duration-300">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center text-white hover:bg-blue-900 transition duration-300">
+                                <i class="fab fa-linkedin text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition duration-300">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-carrot-green mb-4">Sık Sorulan Sorular</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Müşterilerimizin en çok merak ettiği sorular ve cevapları</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <div class="faq-item border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
+                            Karot delim işlemi ne kadar sürer?
+                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
+                            Karot delim süresi çapı, derinliği ve malzeme türüne bağlı olarak değişir. Ortalama olarak 20cm çapında, 30cm derinliğinde bir karot yaklaşık 5-10 dakika sürer.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
+                            Minimum sipariş miktarı var mı?
+                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
+                            Minimum sipariş miktarımız yoktur. Tek bir karot deliğinden binlerce delik gerektiren projelere kadar her türlü ihtiyacınızı karşılarız.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
+                            Toz oluşumu nasıl kontrol ediliyor?
+                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
+                            Sulu karot sistemi kullanarak tozun %99'unu engelliyoruz. Kuru karot işlemlerinde ise endüstriyel vakum sistemleri ile toz kontrolü sağlıyoruz.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
+                            Hafta sonu çalışıyor musunuz?
+                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
+                            Cumartesi günü 09:00-16:00 arası normal çalışma saatlerimiz vardır. Acil durumlar ve özel projeler için 7/24 hizmet vermekteyiz.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
+                            Keşif ücreti alıyor musunuz?
+                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
+                            Keşif hizmetimiz tamamen ücretsizdir. Projelerinizi yerinde inceleyip size en uygun çözümü ve fiyatı sunuyoruz.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-carrot-green text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold mb-4">Hemen İletişime Geçin</h3>
+            <p class="text-carrot-light mb-8 max-w-2xl mx-auto">Projeleriniz için profesyonel karot delim hizmetleri. Ücretsiz keşif ve en uygun fiyat garantisi.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="tel:02125550123" class="bg-carrot-orange text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transform hover:scale-105 transition duration-300 inline-flex items-center">
+                    <i class="fas fa-phone mr-2"></i>Hemen Ara
+                </a>
+                <a href="mailto:info@karotpro.com" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-carrot-green transform hover:scale-105 transition duration-300 inline-flex items-center">
+                    <i class="fas fa-envelope mr-2"></i>E-posta Gönder
+                </a>
+                <a href="#contact-form" class="bg-white text-carrot-green px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300 inline-flex items-center">
+                    <i class="fas fa-edit mr-2"></i>Form Doldur
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-carrot-orange rounded-full flex items-center justify-center">
+                            <i class="fas fa-hammer text-white"></i>
+                        </div>
+                        <h5 class="text-xl font-bold">KarotPro</h5>
+                    </div>
+                    <p class="text-gray-400 mb-4">Profesyonel karot delim hizmetleri ile projelerinizi hayata geçiriyoruz.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-carrot-orange transition duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-carrot-orange transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-carrot-orange transition duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h6 class="text-lg font-semibold mb-4">Hizmetler</h6>
+                    <ul class="space-y-2">
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Beton Karot</a></li>
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Duvar Karot</a></li>
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Zemin Karot</a></li>
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Acil Servis</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h6 class="text-lg font-semibold mb-4">Kurumsal</h6>
+                    <ul class="space-y-2">
+                        <li><a href="hakkimizda.html" class="text-gray-400 hover:text-white transition duration-300">Hakkımızda</a></li>
+                        <li><a href="projeler.html" class="text-gray-400 hover:text-white transition duration-300">Projelerimiz</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Referanslar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Kariyer</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h6 class="text-lg font-semibold mb-4">İletişim</h6>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>0212 555 0123</li>
+                        <li><i class="fas fa-envelope mr-2"></i>info@karotpro.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Denizli, Türkiye</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 KarotPro. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ toggle functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close all other FAQs
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        const otherAnswer = otherQuestion.nextElementSibling;
+                        const otherIcon = otherQuestion.querySelector('i');
+                        otherAnswer.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-180');
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const name = this.name.value.trim();
+            const phone = this.phone.value.trim();
+            const email = this.email.value.trim();
+            const privacy = this.privacy.checked;
+            
+            if (!name || !phone || !email || !privacy) {
+                alert('Lütfen zorunlu alanları doldurun ve gizlilik politikasını kabul edin.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Gönderiliyor...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Teşekkürler! Talebiniz alınmıştır. En kısa sürede size dönüş yapacağız.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

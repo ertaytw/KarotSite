@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeler - KarotPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'construction-orange': '#FF6B35',
+                        'construction-dark': '#2D3748',
+                        'construction-gray': '#4A5568',
+                        'construction-light': '#F7FAFC',
+                        'steel-blue': '#2C5282',
+                        'concrete-gray': '#718096'
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0px)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(255,107,53,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75px 75px, rgba(255,107,53,0.1) 2px, transparent 2px);
+            background-size: 100px 100px;
+        }
+        .construction-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #F56500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-image {
+            background: linear-gradient(135deg, #FF6B35 0%, #F56500 30%, #2C5282 60%, #1A365D 100%);
+        }
+        .filter-active {
+            background: linear-gradient(135deg, #FF6B35 0%, #F56500 100%);
+        }
+    </style>
+</head>
+<body class="bg-construction-light">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-2xl sticky top-0 z-50 border-b-4 border-construction-orange">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gradient-to-br from-construction-orange to-red-600 rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-steel-blue rounded-full animate-pulse"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold gradient-text">KarotPro</h1>
+                        <p class="text-xs text-construction-gray font-semibold">PROFESSIONAL DRILLING</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Anasayfa
+                        <span class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="hakkimizda.html" class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Hakkımızda
+                        <span class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="hizmetler.html" class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Hizmetler
+                        <span class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="projeler.html" class="relative text-construction-orange font-bold text-lg group">
+                        Projeler
+                        <span class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full"></span>
+                    </a>
+                    <a href="iletisim.html" class="bg-gradient-to-r from-construction-orange to-red-600 text-white px-6 py-2 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition duration-300">
+                        İletişim
+                    </a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-construction-gray bg-gray-100 p-2 rounded-lg hover:bg-construction-orange hover:text-white transition duration-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 bg-white rounded-lg shadow-lg">
+                <a href="index.html" class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Anasayfa</a>
+                <a href="hakkimizda.html" class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Hakkımızda</a>
+                <a href="hizmetler.html" class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Hizmetler</a>
+                <a href="projeler.html" class="block py-3 px-4 text-construction-orange font-bold border-l-4 border-construction-orange bg-orange-50">Projeler</a>
+                <a href="iletisim.html" class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">İletişim</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="relative bg-gradient-to-br from-construction-dark via-gray-800 to-construction-gray py-20 overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-20"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-construction-orange opacity-10 rounded-full animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-steel-blue opacity-10 rounded-full animate-bounce-slow"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="inline-flex items-center bg-construction-orange bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-construction-orange border-opacity-30">
+                <i class="fas fa-trophy text-construction-orange mr-2"></i>
+                <span class="text-white font-semibold">Başarılı İşlerimiz</span>
+            </div>
+            
+            <h1 class="text-5xl lg:text-6xl font-bold mb-6 text-white">
+                <span class="gradient-text">Tamamlanan</span> Projelerimiz
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="text-construction-orange font-semibold">1500+ başarılı proje</span> ile sektörde öncü konumumuzu kanıtlıyoruz
+            </p>
+        </div>
+        
+        <!-- Bottom Wave -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-16 fill-current text-construction-light">
+                <path d="M0,40 C300,100 900,0 1200,40 L1200,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-12 bg-construction-light">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn filter-active text-white px-8 py-3 rounded-full font-bold transition duration-300 shadow-lg" data-filter="all">
+                    <i class="fas fa-th-large mr-2"></i>Tümü
+                </button>
+                <button class="filter-btn bg-white text-construction-gray px-8 py-3 rounded-full font-bold hover:bg-construction-orange hover:text-white transition duration-300 shadow-lg border-2 border-gray-200" data-filter="residential">
+                    <i class="fas fa-home mr-2"></i>Konut
+                </button>
+                <button class="filter-btn bg-white text-construction-gray px-8 py-3 rounded-full font-bold hover:bg-construction-orange hover:text-white transition duration-300 shadow-lg border-2 border-gray-200" data-filter="commercial">
+                    <i class="fas fa-building mr-2"></i>Ticari
+                </button>
+                <button class="filter-btn bg-white text-construction-gray px-8 py-3 rounded-full font-bold hover:bg-construction-orange hover:text-white transition duration-300 shadow-lg border-2 border-gray-200" data-filter="industrial">
+                    <i class="fas fa-industry mr-2"></i>Endüstriyel
+                </button>
+                <button class="filter-btn bg-white text-construction-gray px-8 py-3 rounded-full font-bold hover:bg-construction-orange hover:text-white transition duration-300 shadow-lg border-2 border-gray-200" data-filter="infrastructure">
+                    <i class="fas fa-road mr-2"></i>Altyapı
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-16 bg-gradient-to-br from-gray-100 to-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                
+                <!-- Residential Projects -->
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="residential">
+                    <div class="h-56 project-image relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-home mr-2"></i>Konut
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">350 Daire</div>
+                            <div class="text-sm opacity-90">Lüks Rezidans</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Premium Rezidans Projesi</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">350 daireli lüks konut projesinde <span class="font-semibold text-construction-orange">1500+ karot delim işi</span> başarıyla tamamlandı. Modern altyapı ve klima sistemleri kurulumu.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">İstanbul</span>
+                            </div>
+                            <div class="bg-construction-orange bg-opacity-10 text-construction-orange px-4 py-2 rounded-full font-bold">
+                                1500 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">Lüks</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>6 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="residential">
+                    <div class="h-56 bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-home mr-2"></i>Konut
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">120 Daire</div>
+                            <div class="text-sm opacity-90">Site Yenileme</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Modern Site Renovasyonu</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">120 daireli sitenin <span class="font-semibold text-steel-blue">kapsamlı yenileme</span> projesi. Klima, havalandırma ve altyapı sistemlerinin modernizasyonu.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Bursa</span>
+                            </div>
+                            <div class="bg-steel-blue bg-opacity-10 text-steel-blue px-4 py-2 rounded-full font-bold">
+                                800 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-semibold">Yenileme</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>3 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="residential">
+                    <div class="h-56 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-home mr-2"></i>Konut
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2023
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">50 Villa</div>
+                            <div class="text-sm opacity-90">Premium Villa</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Lüks Villa Kompleksi</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">50 villa için <span class="font-semibold text-purple-600">özel karot delim</span> ve altyapı çalışmaları. Premium havuz ve bahçe sulama sistemleri.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Bodrum</span>
+                            </div>
+                            <div class="bg-purple-600 bg-opacity-10 text-purple-600 px-4 py-2 rounded-full font-bold">
+                                600 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs font-semibold">Premium</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>4 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial Projects -->
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="commercial">
+                    <div class="h-56 bg-gradient-to-br from-green-600 via-teal-600 to-blue-600 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-building mr-2"></i>Ticari
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">25 Kat</div>
+                            <div class="text-sm opacity-90">A+ Ofis</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Premium Ofis Kompleksi</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">25 katlı A+ ofis binasında <span class="font-semibold text-green-600">tüm altyapı karot işleri</span>. Modern HVAC ve akıllı bina sistemleri kurulumu.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Ankara</span>
+                            </div>
+                            <div class="bg-green-600 bg-opacity-10 text-green-600 px-4 py-2 rounded-full font-bold">
+                                2000 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">A+ Ofis</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>8 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="commercial">
+                    <div class="h-56 bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-building mr-2"></i>Ticari
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">AVM</div>
+                            <div class="text-sm opacity-90">Genişletme</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">AVM Genişletme Projesi</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">Büyük AVM'nin yeni etabı için <span class="font-semibold text-yellow-600">kapsamlı karot çalışmaları</span>. Mağaza alanları ve yeni restoran katı eklentisi.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">İzmir</span>
+                            </div>
+                            <div class="bg-yellow-600 bg-opacity-10 text-yellow-600 px-4 py-2 rounded-full font-bold">
+                                1200 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">AVM</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>5 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="commercial">
+                    <div class="h-56 bg-gradient-to-br from-red-500 via-pink-500 to-purple-500 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-building mr-2"></i>Ticari
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2023
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">5 Yıldız</div>
+                            <div class="text-sm opacity-90">Otel</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Lüks Otel Renovasyonu</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">5 yıldızlı otelin <span class="font-semibold text-red-600">tam renovasyon karot işleri</span>. SPA, konferans salonu ve suit odalar yenileme projesi.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Antalya</span>
+                            </div>
+                            <div class="bg-red-600 bg-opacity-10 text-red-600 px-4 py-2 rounded-full font-bold">
+                                900 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs font-semibold">5 Yıldız</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>4 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industrial Projects -->
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="industrial">
+                    <div class="h-56 bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-industry mr-2"></i>Endüstriyel
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">Otomotiv</div>
+                            <div class="text-sm opacity-90">Fabrika</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Otomotiv Fabrikası</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">Büyük otomotiv fabrikasının <span class="font-semibold text-gray-700">genişletme projesi</span> karot işleri. Yeni üretim hattı ve robot montaj alanları.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Kocaeli</span>
+                            </div>
+                            <div class="bg-gray-600 bg-opacity-10 text-gray-600 px-4 py-2 rounded-full font-bold">
+                                3000 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-semibold">Fabrika</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>10 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="industrial">
+                    <div class="h-56 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-industry mr-2"></i>Endüstriyel
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2023
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">Tekstil</div>
+                            <div class="text-sm opacity-90">Tesisi</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Modern Tekstil Tesisi</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">Modern tekstil üretim tesisinin <span class="font-semibold text-indigo-600">altyapı karot işleri</span>. Boyahane ve finishing ünitesi kurulumu.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Denizli</span>
+                            </div>
+                            <div class="bg-indigo-600 bg-opacity-10 text-indigo-600 px-4 py-2 rounded-full font-bold">
+                                1800 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-xs font-semibold">Tekstil</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>6 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infrastructure Projects -->
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="infrastructure">
+                    <div class="h-56 bg-gradient-to-br from-green-600 via-teal-600 to-blue-600 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-road mr-2"></i>Altyapı
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">Metro</div>
+                            <div class="text-sm opacity-90">Hattı</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Metro Hattı Genişletme</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">Metro hattı genişletme projesinde <span class="font-semibold text-green-600">özel karot çalışmaları</span>. Yeni istasyon ve tünel bağlantı işleri.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">İstanbul</span>
+                            </div>
+                            <div class="bg-green-600 bg-opacity-10 text-green-600 px-4 py-2 rounded-full font-bold">
+                                5000 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">Metro</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>12 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="infrastructure">
+                    <div class="h-56 bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-road mr-2"></i>Altyapı
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2023
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">Köprü</div>
+                            <div class="text-sm opacity-90">Onarım</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Köprü Güçlendirme</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">Büyük köprünün <span class="font-semibold text-blue-600">güçlendirme çalışmaları</span> için karot işleri. Sismik güçlendirme ve kablo montajı.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">İzmir</span>
+                            </div>
+                            <div class="bg-blue-600 bg-opacity-10 text-blue-600 px-4 py-2 rounded-full font-bold">
+                                2500 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-cyan-100 text-cyan-600 px-3 py-1 rounded-full text-xs font-semibold">Köprü</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>7 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden construction-shadow card-hover" data-category="commercial">
+                    <div class="h-56 bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-500 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                            <span class="text-construction-orange font-bold flex items-center">
+                                <i class="fas fa-hospital mr-2"></i>Sağlık
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-calendar mr-2"></i>2024
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <div class="text-2xl font-bold">600 Yatak</div>
+                            <div class="text-sm opacity-90">Hastane</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-construction-dark">Devlet Hastanesi</h3>
+                        <p class="text-construction-gray mb-6 leading-relaxed">600 yataklı devlet hastanesinin <span class="font-semibold text-teal-600">genişletme projesi</span>. Yoğun bakım ve ameliyathane eklentisi.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-construction-gray">
+                                <i class="fas fa-map-marker-alt mr-2 text-construction-orange"></i>
+                                <span class="font-semibold">Denizli</span>
+                            </div>
+                            <div class="bg-teal-600 bg-opacity-10 text-teal-600 px-4 py-2 rounded-full font-bold">
+                                1400 Delim
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Tamamlandı</span>
+                                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">Hastane</span>
+                            </div>
+                            <div class="text-construction-gray text-sm">
+                                <i class="fas fa-clock mr-1"></i>9 ay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-20 bg-gradient-to-r from-construction-orange to-red-600 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-40 h-40 bg-white opacity-5 rounded-full animate-float"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-white opacity-5 rounded-full animate-bounce-slow"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">Rakamlarla <span class="text-orange-200">Başarımız</span></h2>
+                <p class="text-xl text-orange-100">Sektördeki konumumuzu gösteren başarı istatistiklerimiz</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center text-white">
+                <div class="group">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl border border-white border-opacity-20 card-hover">
+                        <i class="fas fa-trophy text-6xl mb-6 text-orange-200 group-hover:scale-110 transition duration-300"></i>
+                        <div class="text-5xl font-bold mb-2 group-hover:scale-110 transition duration-300">1500+</div>
+                        <div class="text-orange-100 font-semibold text-lg">Başarılı Proje</div>
+                        <div class="mt-3 w-16 h-1 bg-white mx-auto rounded-full"></div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl border border-white border-opacity-20 card-hover">
+                        <i class="fas fa-chart-line text-6xl mb-6 text-orange-200 group-hover:scale-110 transition duration-300"></i>
+                        <div class="text-5xl font-bold mb-2 group-hover:scale-110 transition duration-300">25000+</div>
+                        <div class="text-orange-100 font-semibold text-lg">Toplam Karot Delim</div>
+                        <div class="mt-3 w-16 h-1 bg-white mx-auto rounded-full"></div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl border border-white border-opacity-20 card-hover">
+                        <i class="fas fa-heart text-6xl mb-6 text-orange-200 group-hover:scale-110 transition duration-300"></i>
+                        <div class="text-5xl font-bold mb-2 group-hover:scale-110 transition duration-300">98%</div>
+                        <div class="text-orange-100 font-semibold text-lg">Müşteri Memnuniyeti</div>
+                        <div class="mt-3 w-16 h-1 bg-white mx-auto rounded-full"></div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl border border-white border-opacity-20 card-hover">
+                        <i class="fas fa-map-marked-alt text-6xl mb-6 text-orange-200 group-hover:scale-110 transition duration-300"></i>
+                        <div class="text-5xl font-bold mb-2 group-hover:scale-110 transition duration-300">81</div>
+                        <div class="text-orange-100 font-semibold text-lg">İl Genelinde Hizmet</div>
+                        <div class="mt-3 w-16 h-1 bg-white mx-auto rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-construction-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-construction-orange bg-opacity-10 px-6 py-2 rounded-full mb-4">
+                    <i class="fas fa-quote-left text-construction-orange mr-2"></i>
+                    <span class="text-construction-orange font-semibold">Müşteri Deneyimleri</span>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-construction-dark mb-4">
+                    <span class="gradient-text">Müşteri</span> Görüşleri
+                </h2>
+                <p class="text-xl text-construction-gray max-w-2xl mx-auto">
+                    Projelerimizde çalıştığımız değerli müşterilerimizin görüşleri
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-construction-orange to-red-600 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-user text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-construction-dark">Ahmet Yılmaz</h4>
+                            <p class="text-construction-gray">Proje Müdürü - Yapı A.Ş.</p>
+                        </div>
+                    </div>
+                    <p class="text-construction-gray italic mb-6 text-lg leading-relaxed">"KarotPro ile çalışmak gerçekten keyifliydi. Zamanında, kaliteli ve güvenli bir şekilde tüm işleri tamamladılar. Kesinlikle tekrar çalışırız."</p>
+                    <div class="flex text-construction-orange mb-4">
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                    </div>
+                    <div class="bg-construction-orange bg-opacity-10 text-construction-orange px-4 py-2 rounded-full text-sm font-semibold text-center">
+                        5.0/5 Puan
+                    </div>
+                </div>
+                
+                <div class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-steel-blue to-blue-700 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-user text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-construction-dark">Fatma Demir</h4>
+                            <p class="text-construction-gray">Mimar - İnşaat Müh.</p>
+                        </div>
+                    </div>
+                    <p class="text-construction-gray italic mb-6 text-lg leading-relaxed">"Profesyonel yaklaşımları ve modern ekipmanları sayesinde projemiz sorunsuz tamamlandı. Teşekkürler KarotPro ekibi!"</p>
+                    <div class="flex text-construction-orange mb-4">
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                    </div>
+                    <div class="bg-steel-blue bg-opacity-10 text-steel-blue px-4 py-2 rounded-full text-sm font-semibold text-center">
+                        5.0/5 Puan
+                    </div>
+                </div>
+                
+                <div class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-user text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-construction-dark">Mehmet Kaya</h4>
+                            <p class="text-construction-gray">Müteahhit</p>
+                        </div>
+                    </div>
+                    <p class="text-construction-gray italic mb-6 text-lg leading-relaxed">"15 yıldır sektörde çalışıyorum, bu kadar titiz ve güvenilir bir firma görmedim. Herkese tavsiye ederim."</p>
+                    <div class="flex text-construction-orange mb-4">
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                        <i class="fas fa-star text-xl"></i>
+                    </div>
+                    <div class="bg-green-600 bg-opacity-10 text-green-600 px-4 py-2 rounded-full text-sm font-semibold text-center">
+                        5.0/5 Puan
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 via-construction-dark to-gray-800 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-10"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h3 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Projeniz İçin <span class="gradient-text">Bize Ulaşın</span>
+            </h3>
+            <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Bizimle çalışarak projelerinizi güvenli ellerde teslim edin. 
+                <span class="text-construction-orange font-semibold">Ücretsiz keşif</span> ve detaylı teklif için hemen iletişime geçin.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="iletisim.html" class="inline-flex items-center bg-gradient-to-r from-construction-orange to-red-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-clipboard-list mr-3"></i>
+                    Teklif Al
+                </a>
+                <a href="tel:02125550123" class="inline-flex items-center border-2 border-construction-orange text-construction-orange px-10 py-4 rounded-full font-bold text-lg hover:bg-construction-orange hover:text-white transform hover:scale-105 transition duration-300 backdrop-blur-sm bg-white bg-opacity-10">
+                    <i class="fas fa-phone mr-3"></i>
+                    Hemen Ara
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-construction-dark text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-5"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-construction-orange to-red-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-2xl font-bold gradient-text">KarotPro</h5>
+                            <p class="text-xs text-gray-400 font-semibold">PROFESSIONAL DRILLING</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Profesyonel karot delim hizmetleri ile projelerinizi güvenli ellerde teslim ediyoruz.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transform hover:scale-110 transition duration-300">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-pink-600 rounded-lg flex items-center justify-center text-white hover:bg-pink-700 transform hover:scale-110 transition duration-300">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-blue-800 rounded-lg flex items-center justify-center text-white hover:bg-blue-900 transform hover:scale-110 transition duration-300">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h6 class="text-lg font-bold mb-6 text-construction-orange">Hizmetlerimiz</h6>
+                    <ul class="space-y-3">
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Beton Karot Delim
+                        </a></li>
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Duvar Karot Delim
+                        </a></li>
+                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Zemin Karot Delim
+                        </a></li>
+                        <li><a href="hizmetler.html" class="text-red-400 hover:text-red-300 transition duration-300 flex items-center group">
+                            <i class="fas fa-bolt mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            7/24 Acil Servis
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h6 class="text-lg font-bold mb-6 text-construction-orange">Kurumsal</h6>
+                    <ul class="space-y-3">
+                        <li><a href="hakkimizda.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Hakkımızda
+                        </a></li>
+                        <li><a href="projeler.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Başarılı Projeler
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Referanslarımız
+                        </a></li>
+                        <li><a href="iletisim.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                            Kariyer Fırsatları
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h6 class="text-lg font-bold mb-6 text-construction-orange">İletişim Bilgileri</h6>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-construction-orange bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-phone text-construction-orange"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">0212 555 0123</div>
+                                <div class="text-gray-400 text-sm">Sabit Hat</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-construction-orange bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-envelope text-construction-orange"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">info@karotpro.com</div>
+                                <div class="text-gray-400 text-sm">E-posta</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-construction-orange bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-map-marker-alt text-construction-orange"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Denizli, Türkiye</div>
+                                <div class="text-gray-400 text-sm">Merkez Ofis</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2025 KarotPro. Tüm hakları saklıdır. 
+                        <span class="text-construction-orange font-semibold">Profesyonel Karot Delim Hizmetleri</span>
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-white transition duration-300">Gizlilik Politikası</a>
+                        <a href="#" class="hover:text-white transition duration-300">Kullanım Şartları</a>
+                        <a href="#" class="hover:text-white transition duration-300">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(button => {
+                    button.classList.remove('filter-active', 'text-white');
+                    button.classList.add('bg-white', 'text-construction-gray', 'border-2', 'border-gray-200');
+                });
+                
+                // Add active class to clicked button
+                btn.classList.add('filter-active', 'text-white');
+                btn.classList.remove('bg-white', 'text-construction-gray', 'border-2', 'border-gray-200');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                // Filter projects with animation
+                projectCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(-20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    }, index * 50);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
