@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,242 +11,514 @@
             theme: {
                 extend: {
                     colors: {
-                        'carrot-orange': '#FF6B35',
-                        'carrot-green': '#4A5D23',
-                        'carrot-light': '#FFE5D9'
+                        'construction-orange': '#FF6B35',
+                        'construction-dark': '#2D3748',
+                        'construction-gray': '#4A5568',
+                        'construction-light': '#F7FAFC',
+                        'steel-blue': '#2C5282',
+                        'concrete-gray': '#718096'
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0px)', opacity: '1' },
+                        }
                     }
                 }
             }
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-pattern {
+            background-image:
+                radial-gradient(circle at 25px 25px, rgba(255, 107, 53, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75px 75px, rgba(255, 107, 53, 0.1) 2px, transparent 2px);
+            background-size: 100px 100px;
+        }
+
+        .construction-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #F56500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-icon {
+            background: linear-gradient(135deg, #FF6B35 0%, #F56500 50%, #2C5282 100%);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+
+<body class="bg-construction-light">
     <!-- Header/Navigation -->
-    <header class="bg-white shadow-lg sticky top-0 z-50">
+    <header class="bg-white shadow-2xl sticky top-0 z-50 border-b-4 border-construction-orange">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-carrot-orange rounded-full flex items-center justify-center">
-                        <i class="fas fa-hammer text-white text-lg"></i>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-construction-orange to-red-600 rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-steel-blue rounded-full animate-pulse"></div>
                     </div>
-                    <h1 class="text-2xl font-bold text-carrot-green">KarotPro</h1>
+                    <div>
+                        <h1 class="text-3xl font-bold gradient-text">KarotPro</h1>
+                        <p class="text-xs text-construction-gray font-semibold">ERTA CODE & DESIGN</p>
+                    </div>
                 </div>
-                
-                <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Anasayfa</a>
-                    <a href="hakkimizda.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Hakkımızda</a>
-                    <a href="hizmetler.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Hizmetler</a>
-                    <a href="projeler.html" class="text-gray-700 hover:text-carrot-orange transition duration-300">Projeler</a>
-                    <a href="iletisim.html" class="text-carrot-orange font-semibold border-b-2 border-carrot-orange">İletişim</a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html"
+                        class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Anasayfa
+                        <span
+                            class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="hakkimizda.html"
+                        class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Hakkımızda
+                        <span
+                            class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="hizmetler.html"
+                        class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Hizmetler
+                        <span
+                            class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="projeler.html"
+                        class="text-construction-gray hover:text-construction-orange transition duration-300 font-semibold text-lg group relative">
+                        Projeler
+                        <span
+                            class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="iletisim.html" class="relative text-construction-orange font-bold text-lg group">
+                        İletişim
+                        <span
+                            class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-construction-orange to-red-600 rounded-full"></span>
+                    </a>
                 </div>
-                
+
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700">
+                    <button id="mobile-menu-btn"
+                        class="text-construction-gray bg-gray-100 p-2 rounded-lg hover:bg-construction-orange hover:text-white transition duration-300">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
-            
+
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="index.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Anasayfa</a>
-                <a href="hakkimizda.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Hakkımızda</a>
-                <a href="hizmetler.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Hizmetler</a>
-                <a href="projeler.html" class="block py-2 text-gray-700 hover:text-carrot-orange">Projeler</a>
-                <a href="iletisim.html" class="block py-2 text-carrot-orange font-semibold">İletişim</a>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 bg-white rounded-lg shadow-lg">
+                <a href="index.html"
+                    class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Anasayfa</a>
+                <a href="hakkimizda.html"
+                    class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Hakkımızda</a>
+                <a href="hizmetler.html"
+                    class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Hizmetler</a>
+                <a href="projeler.html"
+                    class="block py-3 px-4 text-construction-gray hover:text-construction-orange hover:bg-gray-50 transition duration-300">Projeler</a>
+                <a href="iletisim.html"
+                    class="block py-3 px-4 text-construction-orange font-bold border-l-4 border-construction-orange bg-orange-50">İletişim</a>
             </div>
         </nav>
     </header>
 
     <!-- Page Header -->
-    <section class="bg-gradient-to-r from-carrot-orange to-orange-600 text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold mb-4">İletişim</h1>
-            <p class="text-xl text-carrot-light">Projeleriniz için hemen iletişime geçin</p>
+    <section
+        class="relative bg-gradient-to-br from-construction-dark via-gray-800 to-construction-gray py-20 overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-20"></div>
+
+        <!-- Floating Elements -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-construction-orange opacity-10 rounded-full animate-float">
+        </div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-steel-blue opacity-10 rounded-full animate-bounce-slow">
+        </div>
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div
+                class="inline-flex items-center bg-construction-orange bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-construction-orange border-opacity-30">
+                <i class="fas fa-handshake text-construction-orange mr-2"></i>
+                <span class="text-white font-semibold">Bizimle İletişime Geçin</span>
+            </div>
+
+            <h1 class="text-5xl lg:text-6xl font-bold mb-6 text-white">
+                <span class="gradient-text">Profesyonel</span> Destek
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Projeleriniz için <span class="text-construction-orange font-semibold">ücretsiz danışmanlık</span> ve
+                hızlı çözümler
+            </p>
+        </div>
+
+        <!-- Bottom Wave -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"
+                class="w-full h-16 fill-current text-construction-light">
+                <path d="M0,40 C300,100 900,0 1200,40 L1200,120 L0,120 Z"></path>
+            </svg>
         </div>
     </section>
 
     <!-- Contact Information -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-construction-light">
         <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-construction-orange bg-opacity-10 px-6 py-2 rounded-full mb-4">
+                    <i class="fas fa-phone text-construction-orange mr-2"></i>
+                    <span class="text-construction-orange font-semibold">İletişim Bilgileri</span>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-construction-dark mb-4">
+                    Hızlı <span class="gradient-text">İletişim</span> Kanalları
+                </h2>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6 bg-carrot-light rounded-lg hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-carrot-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-phone text-white text-2xl"></i>
+                <div
+                    class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover text-center">
+                    <div
+                        class="w-20 h-20 contact-icon rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-phone text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">Telefon</h3>
-                    <p class="text-gray-700 mb-2">Sabit Hat</p>
-                    <a href="tel:02125550123" class="text-carrot-orange font-semibold hover:underline">0212 555 0123</a>
-                    <p class="text-gray-700 mb-2 mt-3">Mobil</p>
-                    <a href="tel:05355550123" class="text-carrot-orange font-semibold hover:underline">0535 555 0123</a>
+                    <h3 class="text-2xl font-bold mb-4 text-construction-dark">Telefon</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-construction-gray mb-1">Sabit Hat</p>
+                            <a href="tel:02125550123"
+                                class="text-construction-orange font-bold text-lg hover:text-red-600 transition duration-300">0212
+                                555 0123</a>
+                        </div>
+                        <div>
+                            <p class="text-construction-gray mb-1">Mobil</p>
+                            <a href="tel:05355550123"
+                                class="text-steel-blue font-bold text-lg hover:text-blue-700 transition duration-300">0535
+                                555 0123</a>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <div
+                            class="bg-construction-orange bg-opacity-10 text-construction-orange px-4 py-2 rounded-full text-sm font-semibold">
+                            7/24 Aktif
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-carrot-green rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-envelope text-white text-2xl"></i>
+
+                <div
+                    class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover text-center">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-steel-blue to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-envelope text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">E-posta</h3>
-                    <p class="text-gray-700 mb-2">Genel</p>
-                    <a href="mailto:info@karotpro.com" class="text-carrot-orange font-semibold hover:underline">info@karotpro.com</a>
-                    <p class="text-gray-700 mb-2 mt-3">Teklif</p>
-                    <a href="mailto:teklif@karotpro.com" class="text-carrot-orange font-semibold hover:underline">teklif@karotpro.com</a>
+                    <h3 class="text-2xl font-bold mb-4 text-construction-dark">E-posta</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-construction-gray mb-1">Genel</p>
+                            <a href="mailto:info@karotpro.com"
+                                class="text-steel-blue font-bold text-lg hover:text-blue-700 transition duration-300">info@karotpro.com</a>
+                        </div>
+                        <div>
+                            <p class="text-construction-gray mb-1">Teklif</p>
+                            <a href="mailto:teklif@karotpro.com"
+                                class="text-construction-orange font-bold text-lg hover:text-red-600 transition duration-300">teklif@karotpro.com</a>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <div
+                            class="bg-steel-blue bg-opacity-10 text-steel-blue px-4 py-2 rounded-full text-sm font-semibold">
+                            24 Saat İçinde
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="text-center p-6 bg-blue-50 rounded-lg hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+
+                <div
+                    class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover text-center">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">Adres</h3>
-                    <p class="text-gray-700">Atatürk Mahallesi<br>İnşaat Caddesi No: 45<br>Pamukkale/Denizli</p>
-                    <p class="text-gray-600 text-sm mt-2">20100 Türkiye</p>
+                    <h3 class="text-2xl font-bold mb-4 text-construction-dark">Adres</h3>
+                    <div class="space-y-2">
+                        <p class="text-construction-gray font-semibold">Atatürk Mahallesi</p>
+                        <p class="text-construction-gray font-semibold">İnşaat Caddesi No: 45</p>
+                        <p class="text-construction-gray font-semibold">Pamukkale/Denizli</p>
+                        <p class="text-steel-blue font-bold">20100 Türkiye</p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="https://maps.google.com" target="_blank"
+                            class="bg-green-600 bg-opacity-10 text-green-600 px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-600 hover:text-white transition duration-300">
+                            Haritada Görüntüle
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="text-center p-6 bg-green-50 rounded-lg hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-white text-2xl"></i>
+
+                <div
+                    class="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow card-hover text-center">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-clock text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-carrot-green">Çalışma Saatleri</h3>
-                    <p class="text-gray-700 mb-1">Pazartesi - Cuma</p>
-                    <p class="text-carrot-orange font-semibold">08:00 - 18:00</p>
-                    <p class="text-gray-700 mb-1 mt-2">Cumartesi</p>
-                    <p class="text-carrot-orange font-semibold">09:00 - 16:00</p>
-                    <p class="text-red-600 text-sm mt-2">Acil durumlar: 7/24</p>
+                    <h3 class="text-2xl font-bold mb-4 text-construction-dark">Çalışma Saatleri</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-construction-gray">Pazartesi - Cuma</p>
+                            <p class="text-construction-orange font-bold text-lg">08:00 - 18:00</p>
+                        </div>
+                        <div>
+                            <p class="text-construction-gray">Cumartesi</p>
+                            <p class="text-steel-blue font-bold text-lg">09:00 - 16:00</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <div class="bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-semibold">
+                            Acil: 7/24
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Form & Map -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-20 bg-gradient-to-br from-gray-100 to-white">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Contact Form -->
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-carrot-green mb-6">Teklif Talep Formu</h3>
-                    <p class="text-gray-600 mb-6">Projeleriniz için detaylı bilgi verin, size en uygun teklifi sunalım.</p>
-                    
+                <div class="bg-gradient-to-br from-white to-gray-50 p-10 rounded-3xl construction-shadow">
+                    <div class="text-center mb-8">
+                        <div
+                            class="inline-flex items-center bg-construction-orange bg-opacity-10 px-6 py-2 rounded-full mb-4">
+                            <i class="fas fa-edit text-construction-orange mr-2"></i>
+                            <span class="text-construction-orange font-semibold">Teklif Talep Et</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-construction-dark mb-4">Ücretsiz Teklif Formu</h3>
+                        <p class="text-construction-gray">Projeleriniz için detaylı bilgi verin, size en uygun teklifi
+                            sunalım.</p>
+                    </div>
+
                     <form id="contact-form" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Ad Soyad *</label>
-                                <input type="text" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-user mr-2"></i>Ad Soyad *
+                                </label>
+                                <input type="text" name="name" required
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
                             </div>
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Telefon *</label>
-                                <input type="tel" name="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
-                            </div>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">E-posta *</label>
-                                <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Şehir</label>
-                                <input type="text" name="city" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-phone mr-2"></i>Telefon *
+                                </label>
+                                <input type="tel" name="phone" required
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
                             </div>
                         </div>
-                        
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Hizmet Türü</label>
-                            <select name="service" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-envelope mr-2"></i>E-posta *
+                                </label>
+                                <input type="email" name="email" required
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
+                            </div>
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>Şehir
+                                </label>
+                                <input type="text" name="city"
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
+                            </div>
+                        </div>
+
+                        <div class="group">
+                            <label
+                                class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                <i class="fas fa-tools mr-2"></i>Hizmet Türü
+                            </label>
+                            <select name="service"
+                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
                                 <option value="">Seçiniz</option>
-                                <option value="beton-karot">Beton Karot</option>
-                                <option value="duvar-karot">Duvar Karot</option>
-                                <option value="zemin-karot">Zemin Karot</option>
-                                <option value="sulu-karot">Sulu Karot</option>
-                                <option value="acil-servis">Acil Servis</option>
-                                <option value="danismanlik">Proje Danışmanlığı</option>
-                                <option value="diger">Diğer</option>
+                                <option value="beton-karot">🏢 Beton Karot</option>
+                                <option value="duvar-karot">🏠 Duvar Karot</option>
+                                <option value="zemin-karot">🔧 Zemin Karot</option>
+                                <option value="sulu-karot">💧 Sulu Karot</option>
+                                <option value="acil-servis">⚡ Acil Servis</option>
+                                <option value="danismanlik">👥 Proje Danışmanlığı</option>
+                                <option value="diger">❓ Diğer</option>
                             </select>
                         </div>
-                        
-                        <div class="grid md:grid-cols-3 gap-4">
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Karot Çapı (cm)</label>
-                                <input type="number" name="diameter" placeholder="Örn: 20" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-ruler-combined mr-2"></i>Karot Çapı (cm)
+                                </label>
+                                <input type="number" name="diameter" placeholder="Örn: 20"
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
                             </div>
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Derinlik (cm)</label>
-                                <input type="number" name="depth" placeholder="Örn: 50" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-arrows-alt-v mr-2"></i>Derinlik (cm)
+                                </label>
+                                <input type="number" name="depth" placeholder="Örn: 50"
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
                             </div>
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Adet</label>
-                                <input type="number" name="quantity" placeholder="Örn: 10" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent">
+                            <div class="group">
+                                <label
+                                    class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                    <i class="fas fa-hashtag mr-2"></i>Adet
+                                </label>
+                                <input type="number" name="quantity" placeholder="Örn: 10"
+                                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent transition duration-300 bg-white">
                             </div>
                         </div>
-                        
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Proje Detayları</label>
-                            <textarea name="message" rows="4" placeholder="Projeniz hakkında detaylı bilgi verin..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:border-transparent resize-none"></textarea>
+
+                        <div class="group">
+                            <label
+                                class="block text-construction-dark font-bold mb-2 group-focus-within:text-construction-orange transition duration-300">
+                                <i class="fas fa-comment-alt mr-2"></i>Proje Detayları
+                            </label>
+                            <textarea name="message" rows="5" placeholder="Projeniz hakkında detaylı bilgi verin..."
+                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-construction-orange focus:border-transparent resize-none transition duration-300 bg-white"></textarea>
                         </div>
-                        
+
                         <div class="flex items-center">
-                            <input type="checkbox" id="privacy" name="privacy" required class="mr-3">
-                            <label for="privacy" class="text-gray-700 text-sm">
-                                <a href="#" class="text-carrot-orange hover:underline">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
+                            <input type="checkbox" id="privacy" name="privacy" required
+                                class="mr-3 w-5 h-5 text-construction-orange">
+                            <label for="privacy" class="text-construction-gray text-sm">
+                                <a href="#"
+                                    class="text-construction-orange hover:text-red-600 font-semibold transition duration-300">Gizlilik
+                                    Politikası</a>'nı okudum ve kabul ediyorum.
                             </label>
                         </div>
-                        
-                        <button type="submit" class="w-full bg-carrot-orange text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-600 transform hover:scale-105 transition duration-300">
-                            <i class="fas fa-paper-plane mr-2"></i>Teklif Talep Et
+
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-construction-orange to-red-600 text-white py-4 px-8 rounded-xl font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-3"></i>
+                            Ücretsiz Teklif Talep Et
                         </button>
+
+                        <div class="text-center mt-6">
+                            <p class="text-construction-gray text-sm">
+                                <i class="fas fa-shield-alt mr-2 text-green-600"></i>
+                                Verileriniz güvenli bir şekilde şifrelenir ve korunur.
+                            </p>
+                        </div>
                     </form>
                 </div>
-                
-                <!-- Map & Additional Info -->
+
+                <!-- Right Side Info -->
                 <div class="space-y-8">
-                    <!-- Map -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-carrot-green mb-4">Ofis Lokasyonu</h3>
-                        <div class="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                            <div class="text-center text-gray-600">
-                                <i class="fas fa-map-marker-alt text-4xl text-carrot-orange mb-2"></i>
-                                <p class="font-semibold">KarotPro Ofisi</p>
-                                <p class="text-sm">Atatürk Mah. İnşaat Cad. No:45</p>
-                                <p class="text-sm">Pamukkale/Denizli</p>
-                                <a href="https://maps.google.com" target="_blank" class="text-carrot-orange hover:underline text-sm mt-2 inline-block">
-                                    Google Maps'te Görüntüle
+                    <!-- Interactive Map -->
+                    <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow">
+                        <h3 class="text-2xl font-bold text-construction-dark mb-6 flex items-center">
+                            <i class="fas fa-map-marked-alt mr-3 text-construction-orange"></i>
+                            Ofis Lokasyonu
+                        </h3>
+                        <div
+                            class="h-64 bg-gradient-to-br from-construction-orange via-red-500 to-steel-blue rounded-2xl flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="text-center text-white relative z-10">
+                                <i class="fas fa-map-marker-alt text-6xl mb-4 animate-bounce-slow"></i>
+                                <div class="text-2xl font-bold mb-2">KarotPro Ofisi</div>
+                                <p class="text-lg opacity-90">Atatürk Mah. İnşaat Cad. No:45</p>
+                                <p class="text-lg opacity-90">Pamukkale/Denizli</p>
+                                <a href="https://maps.google.com" target="_blank"
+                                    class="inline-block mt-4 bg-white bg-opacity-20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-construction-orange transition duration-300">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Google Maps
                                 </a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Emergency Contact -->
-                    <div class="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-                        <h3 class="text-xl font-bold text-red-700 mb-4">
-                            <i class="fas fa-exclamation-triangle mr-2"></i>Acil Durum İletişim
+                    <div
+                        class="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-3xl border-2 border-red-200 card-hover">
+                        <h3 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-3 animate-pulse"></i>
+                            7/24 Acil Durum
                         </h3>
-                        <p class="text-gray-700 mb-4">7/24 acil karot delim hizmetleri için:</p>
-                        <div class="space-y-2">
-                            <a href="tel:05355550123" class="flex items-center text-red-600 font-semibold hover:underline">
-                                <i class="fas fa-phone mr-3"></i>0535 555 0123
+                        <p class="text-construction-gray mb-6 leading-relaxed">
+                            Acil karot delim ihtiyaçlarınız için <span class="font-semibold text-red-600">anında
+                                müdahale</span> garantisi.
+                        </p>
+                        <div class="space-y-4">
+                            <a href="tel:05355550123"
+                                class="flex items-center justify-center bg-red-600 text-white p-4 rounded-xl font-bold hover:bg-red-700 transform hover:scale-105 transition duration-300">
+                                <i class="fas fa-phone mr-3 animate-bounce"></i>
+                                ACİL HAT: 0535 555 0123
                             </a>
-                            <a href="mailto:acil@karotpro.com" class="flex items-center text-red-600 font-semibold hover:underline">
-                                <i class="fas fa-envelope mr-3"></i>acil@karotpro.com
+                            <a href="mailto:acil@karotpro.com"
+                                class="flex items-center justify-center bg-orange-600 text-white p-4 rounded-xl font-bold hover:bg-orange-700 transform hover:scale-105 transition duration-300">
+                                <i class="fas fa-envelope mr-3"></i>
+                                acil@karotpro.com
                             </a>
                         </div>
-                        <p class="text-sm text-gray-600 mt-4">Acil durumlarda ortalama müdahale süresi: 2 saat</p>
+                        <div class="mt-6 text-center">
+                            <div class="bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-semibold">
+                                <i class="fas fa-clock mr-2"></i>
+                                Ortalama Müdahale: 2 Saat
+                            </div>
+                        </div>
                     </div>
-                    
+
                     <!-- Social Media -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-carrot-green mb-4">Sosyal Medya</h3>
-                        <p class="text-gray-600 mb-4">Güncel projelerimizi ve duyurularımızı takip edin:</p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition duration-300">
-                                <i class="fab fa-facebook text-lg"></i>
+                    <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl construction-shadow">
+                        <h3 class="text-2xl font-bold text-construction-dark mb-6 flex items-center">
+                            <i class="fas fa-share-alt mr-3 text-construction-orange"></i>
+                            Sosyal Medya
+                        </h3>
+                        <p class="text-construction-gray mb-6">Güncel projelerimizi ve duyurularımızı takip edin:</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#"
+                                class="flex items-center justify-center bg-blue-600 text-white p-4 rounded-xl font-semibold hover:bg-blue-700 transform hover:scale-105 transition duration-300">
+                                <i class="fab fa-facebook text-2xl mr-3"></i>
+                                Facebook
                             </a>
-                            <a href="#" class="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition duration-300">
-                                <i class="fab fa-instagram text-lg"></i>
+                            <a href="#"
+                                class="flex items-center justify-center bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition duration-300">
+                                <i class="fab fa-instagram text-2xl mr-3"></i>
+                                Instagram
                             </a>
-                            <a href="#" class="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center text-white hover:bg-blue-900 transition duration-300">
-                                <i class="fab fa-linkedin text-lg"></i>
+                            <a href="#"
+                                class="flex items-center justify-center bg-blue-800 text-white p-4 rounded-xl font-semibold hover:bg-blue-900 transform hover:scale-105 transition duration-300">
+                                <i class="fab fa-linkedin text-2xl mr-3"></i>
+                                LinkedIn
                             </a>
-                            <a href="#" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition duration-300">
-                                <i class="fab fa-youtube text-lg"></i>
+                            <a href="#"
+                                class="flex items-center justify-center bg-red-600 text-white p-4 rounded-xl font-semibold hover:bg-red-700 transform hover:scale-105 transition duration-300">
+                                <i class="fab fa-youtube text-2xl mr-3"></i>
+                                YouTube
                             </a>
                         </div>
                     </div>
@@ -255,62 +528,128 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-construction-light">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-carrot-green mb-4">Sık Sorulan Sorular</h3>
-                <p class="text-gray-600 max-w-2xl mx-auto">Müşterilerimizin en çok merak ettiği sorular ve cevapları</p>
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-construction-orange bg-opacity-10 px-6 py-2 rounded-full mb-4">
+                    <i class="fas fa-question-circle text-construction-orange mr-2"></i>
+                    <span class="text-construction-orange font-semibold">Sık Sorulan Sorular</span>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-construction-dark mb-4">
+                    <span class="gradient-text">Merak</span> Edilenler
+                </h2>
+                <p class="text-xl text-construction-gray max-w-2xl mx-auto">Müşterilerimizin en çok merak ettiği sorular
+                    ve cevapları</p>
             </div>
-            
+
             <div class="max-w-4xl mx-auto">
-                <div class="space-y-4">
-                    <div class="faq-item border border-gray-200 rounded-lg">
-                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
-                            Karot delim işlemi ne kadar sürer?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                <div class="space-y-6">
+                    <div
+                        class="faq-item bg-gradient-to-br from-white to-gray-50 rounded-2xl construction-shadow overflow-hidden">
+                        <button
+                            class="faq-question w-full p-8 text-left font-bold text-construction-dark flex justify-between items-center hover:bg-construction-orange hover:text-white transition duration-300 group">
+                            <span class="flex items-center">
+                                <i class="fas fa-clock mr-4 text-construction-orange group-hover:text-white"></i>
+                                Karot delim işlemi ne kadar sürer?
+                            </span>
+                            <i
+                                class="fas fa-chevron-down transform transition-transform duration-300 text-construction-orange group-hover:text-white"></i>
                         </button>
-                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
-                            Karot delim süresi çapı, derinliği ve malzeme türüne bağlı olarak değişir. Ortalama olarak 20cm çapında, 30cm derinliğinde bir karot yaklaşık 5-10 dakika sürer.
+                        <div class="faq-answer hidden p-8 pt-0 text-construction-gray leading-relaxed">
+                            <div class="bg-construction-orange bg-opacity-5 p-6 rounded-xl">
+                                Karot delim süresi <span class="font-semibold text-construction-orange">çapı, derinliği
+                                    ve malzeme türüne</span> bağlı olarak değişir.
+                                Ortalama olarak 20cm çapında, 30cm derinliğinde bir karot yaklaşık <span
+                                    class="font-semibold text-steel-blue">5-10 dakika</span> sürer.
+                                Büyük projeler için detaylı zaman planlaması yapıyoruz.
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="faq-item border border-gray-200 rounded-lg">
-                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
-                            Minimum sipariş miktarı var mı?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+
+                    <div
+                        class="faq-item bg-gradient-to-br from-white to-gray-50 rounded-2xl construction-shadow overflow-hidden">
+                        <button
+                            class="faq-question w-full p-8 text-left font-bold text-construction-dark flex justify-between items-center hover:bg-construction-orange hover:text-white transition duration-300 group">
+                            <span class="flex items-center">
+                                <i class="fas fa-calculator mr-4 text-construction-orange group-hover:text-white"></i>
+                                Minimum sipariş miktarı var mı?
+                            </span>
+                            <i
+                                class="fas fa-chevron-down transform transition-transform duration-300 text-construction-orange group-hover:text-white"></i>
                         </button>
-                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
-                            Minimum sipariş miktarımız yoktur. Tek bir karot deliğinden binlerce delik gerektiren projelere kadar her türlü ihtiyacınızı karşılarız.
+                        <div class="faq-answer hidden p-8 pt-0 text-construction-gray leading-relaxed">
+                            <div class="bg-steel-blue bg-opacity-5 p-6 rounded-xl">
+                                <span class="font-semibold text-steel-blue">Minimum sipariş miktarımız yoktur.</span>
+                                Tek bir karot deliğinden binlerce delik gerektiren projelere kadar her türlü
+                                ihtiyacınızı karşılarız.
+                                Her proje bizim için önemlidir.
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="faq-item border border-gray-200 rounded-lg">
-                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
-                            Toz oluşumu nasıl kontrol ediliyor?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+
+                    <div
+                        class="faq-item bg-gradient-to-br from-white to-gray-50 rounded-2xl construction-shadow overflow-hidden">
+                        <button
+                            class="faq-question w-full p-8 text-left font-bold text-construction-dark flex justify-between items-center hover:bg-construction-orange hover:text-white transition duration-300 group">
+                            <span class="flex items-center">
+                                <i class="fas fa-wind mr-4 text-construction-orange group-hover:text-white"></i>
+                                Toz oluşumu nasıl kontrol ediliyor?
+                            </span>
+                            <i
+                                class="fas fa-chevron-down transform transition-transform duration-300 text-construction-orange group-hover:text-white"></i>
                         </button>
-                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
-                            Sulu karot sistemi kullanarak tozun %99'unu engelliyoruz. Kuru karot işlemlerinde ise endüstriyel vakum sistemleri ile toz kontrolü sağlıyoruz.
+                        <div class="faq-answer hidden p-8 pt-0 text-construction-gray leading-relaxed">
+                            <div class="bg-green-600 bg-opacity-5 p-6 rounded-xl">
+                                <span class="font-semibold text-green-600">Sulu karot sistemi</span> kullanarak tozun
+                                %99'unu engelliyoruz.
+                                Kuru karot işlemlerinde ise <span
+                                    class="font-semibold text-construction-orange">endüstriyel vakum sistemleri</span>
+                                ile toz kontrolü sağlıyoruz. Çevre dostu yaklaşımımızla temiz çalışma garantisi
+                                veriyoruz.
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="faq-item border border-gray-200 rounded-lg">
-                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
-                            Hafta sonu çalışıyor musunuz?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+
+                    <div
+                        class="faq-item bg-gradient-to-br from-white to-gray-50 rounded-2xl construction-shadow overflow-hidden">
+                        <button
+                            class="faq-question w-full p-8 text-left font-bold text-construction-dark flex justify-between items-center hover:bg-construction-orange hover:text-white transition duration-300 group">
+                            <span class="flex items-center">
+                                <i class="fas fa-calendar-alt mr-4 text-construction-orange group-hover:text-white"></i>
+                                Hafta sonu çalışıyor musunuz?
+                            </span>
+                            <i
+                                class="fas fa-chevron-down transform transition-transform duration-300 text-construction-orange group-hover:text-white"></i>
                         </button>
-                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
-                            Cumartesi günü 09:00-16:00 arası normal çalışma saatlerimiz vardır. Acil durumlar ve özel projeler için 7/24 hizmet vermekteyiz.
+                        <div class="faq-answer hidden p-8 pt-0 text-construction-gray leading-relaxed">
+                            <div class="bg-purple-600 bg-opacity-5 p-6 rounded-xl">
+                                Cumartesi günü <span class="font-semibold text-purple-600">09:00-16:00</span> arası
+                                normal çalışma saatlerimiz vardır.
+                                <span class="font-semibold text-construction-orange">Acil durumlar</span> ve özel
+                                projeler için
+                                <span class="font-semibold text-red-600">7/24 hizmet</span> vermekteyiz.
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="faq-item border border-gray-200 rounded-lg">
-                        <button class="faq-question w-full p-6 text-left font-semibold text-carrot-green flex justify-between items-center hover:bg-carrot-light transition duration-300">
-                            Keşif ücreti alıyor musunuz?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+
+                    <div
+                        class="faq-item bg-gradient-to-br from-white to-gray-50 rounded-2xl construction-shadow overflow-hidden">
+                        <button
+                            class="faq-question w-full p-8 text-left font-bold text-construction-dark flex justify-between items-center hover:bg-construction-orange hover:text-white transition duration-300 group">
+                            <span class="flex items-center">
+                                <i class="fas fa-search mr-4 text-construction-orange group-hover:text-white"></i>
+                                Keşif ücreti alıyor musunuz?
+                            </span>
+                            <i
+                                class="fas fa-chevron-down transform transition-transform duration-300 text-construction-orange group-hover:text-white"></i>
                         </button>
-                        <div class="faq-answer hidden p-6 pt-0 text-gray-700">
-                            Keşif hizmetimiz tamamen ücretsizdir. Projelerinizi yerinde inceleyip size en uygun çözümü ve fiyatı sunuyoruz.
+                        <div class="faq-answer hidden p-8 pt-0 text-construction-gray leading-relaxed">
+                            <div class="bg-construction-orange bg-opacity-5 p-6 rounded-xl">
+                                <span class="font-semibold text-construction-orange">Keşif hizmetimiz tamamen
+                                    ücretsizdir.</span>
+                                Projelerinizi yerinde inceleyip size en uygun çözümü ve fiyatı sunuyoruz.
+                                Detaylı teknik rapor ve maliyet analizi de ücretsiz olarak sağlanır.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -318,82 +657,208 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 bg-carrot-green text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-bold mb-4">Hemen İletişime Geçin</h3>
-            <p class="text-carrot-light mb-8 max-w-2xl mx-auto">Projeleriniz için profesyonel karot delim hizmetleri. Ücretsiz keşif ve en uygun fiyat garantisi.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="tel:02125550123" class="bg-carrot-orange text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transform hover:scale-105 transition duration-300 inline-flex items-center">
-                    <i class="fas fa-phone mr-2"></i>Hemen Ara
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-construction-orange to-red-600 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-40 h-40 bg-white opacity-5 rounded-full animate-float"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-white opacity-5 rounded-full animate-bounce-slow">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h3 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Hemen <span class="text-orange-200">İletişime Geçin</span>
+            </h3>
+            <p class="text-xl text-orange-100 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Projeleriniz için profesyonel karot delim hizmetleri.
+                <span class="font-semibold">Ücretsiz keşif</span> ve <span class="font-semibold">en uygun fiyat
+                    garantisi.</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="tel:02125550123"
+                    class="inline-flex items-center bg-white text-construction-orange px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-phone mr-3 animate-bounce"></i>
+                    Hemen Ara: 0212 555 0123
                 </a>
-                <a href="mailto:info@karotpro.com" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-carrot-green transform hover:scale-105 transition duration-300 inline-flex items-center">
-                    <i class="fas fa-envelope mr-2"></i>E-posta Gönder
+                <a href="mailto:info@karotpro.com"
+                    class="inline-flex items-center border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-construction-orange transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-envelope mr-3"></i>
+                    E-posta Gönder
                 </a>
-                <a href="#contact-form" class="bg-white text-carrot-green px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300 inline-flex items-center">
-                    <i class="fas fa-edit mr-2"></i>Form Doldur
+                <a href="#contact-form"
+                    class="inline-flex items-center bg-construction-dark text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-edit mr-3"></i>
+                    Form Doldur
                 </a>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div
+                    class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-2xl border border-white border-opacity-20">
+                    <i class="fas fa-gift text-4xl text-white mb-4"></i>
+                    <h4 class="text-xl font-bold text-white mb-2">Ücretsiz Keşif</h4>
+                    <p class="text-orange-100">Projelerinizi ücretsiz değerlendiriyoruz</p>
+                </div>
+                <div
+                    class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-2xl border border-white border-opacity-20">
+                    <i class="fas fa-clock text-4xl text-white mb-4"></i>
+                    <h4 class="text-xl font-bold text-white mb-2">24 Saat Dönüş</h4>
+                    <p class="text-orange-100">En geç 24 saat içinde size dönüş yapıyoruz</p>
+                </div>
+                <div
+                    class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-2xl border border-white border-opacity-20">
+                    <i class="fas fa-medal text-4xl text-white mb-4"></i>
+                    <h4 class="text-xl font-bold text-white mb-2">En İyi Fiyat</h4>
+                    <p class="text-orange-100">Rekabetçi fiyat garantisi sunuyoruz</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
+    <footer class="bg-construction-dark text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-5"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8 bg-carrot-orange rounded-full flex items-center justify-center">
-                            <i class="fas fa-hammer text-white"></i>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-construction-orange to-red-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
                         </div>
-                        <h5 class="text-xl font-bold">KarotPro</h5>
+                        <div>
+                            <h5 class="text-2xl font-bold gradient-text">KarotPro</h5>
+                            <p class="text-xs text-gray-400 font-semibold">PROFESSIONAL DRILLING</p>
+                        </div>
                     </div>
-                    <p class="text-gray-400 mb-4">Profesyonel karot delim hizmetleri ile projelerinizi hayata geçiriyoruz.</p>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Profesyonel karot delim hizmetleri ile projelerinizi güvenli ellerde teslim ediyoruz.
+                    </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-carrot-orange transition duration-300">
-                            <i class="fab fa-facebook text-xl"></i>
+                        <a href="#"
+                            class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transform hover:scale-110 transition duration-300">
+                            <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-carrot-orange transition duration-300">
-                            <i class="fab fa-instagram text-xl"></i>
+                        <a href="#"
+                            class="w-12 h-12 bg-pink-600 rounded-lg flex items-center justify-center text-white hover:bg-pink-700 transform hover:scale-110 transition duration-300">
+                            <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-carrot-orange transition duration-300">
-                            <i class="fab fa-linkedin text-xl"></i>
+                        <a href="#"
+                            class="w-12 h-12 bg-blue-800 rounded-lg flex items-center justify-center text-white hover:bg-blue-900 transform hover:scale-110 transition duration-300">
+                            <i class="fab fa-linkedin text-lg"></i>
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
-                    <h6 class="text-lg font-semibold mb-4">Hizmetler</h6>
-                    <ul class="space-y-2">
-                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Beton Karot</a></li>
-                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Duvar Karot</a></li>
-                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Zemin Karot</a></li>
-                        <li><a href="hizmetler.html" class="text-gray-400 hover:text-white transition duration-300">Acil Servis</a></li>
+                    <h6 class="text-lg font-bold mb-6 text-construction-orange">Hizmetlerimiz</h6>
+                    <ul class="space-y-3">
+                        <li><a href="hizmetler.html"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Beton Karot Delim
+                            </a></li>
+                        <li><a href="hizmetler.html"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Duvar Karot Delim
+                            </a></li>
+                        <li><a href="hizmetler.html"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Zemin Karot Delim
+                            </a></li>
+                        <li><a href="hizmetler.html"
+                                class="text-red-400 hover:text-red-300 transition duration-300 flex items-center group">
+                                <i class="fas fa-bolt mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                7/24 Acil Servis
+                            </a></li>
                     </ul>
                 </div>
-                
+
                 <div>
-                    <h6 class="text-lg font-semibold mb-4">Kurumsal</h6>
-                    <ul class="space-y-2">
-                        <li><a href="hakkimizda.html" class="text-gray-400 hover:text-white transition duration-300">Hakkımızda</a></li>
-                        <li><a href="projeler.html" class="text-gray-400 hover:text-white transition duration-300">Projelerimiz</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Referanslar</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Kariyer</a></li>
+                    <h6 class="text-lg font-bold mb-6 text-construction-orange">Kurumsal</h6>
+                    <ul class="space-y-3">
+                        <li><a href="hakkimizda.html"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Hakkımızda
+                            </a></li>
+                        <li><a href="projeler.html"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Başarılı Projeler
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Referanslarımız
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-arrow-right mr-2 group-hover:translate-x-1 transition duration-300"></i>
+                                Kariyer Fırsatları
+                            </a></li>
                     </ul>
                 </div>
-                
+
                 <div>
-                    <h6 class="text-lg font-semibold mb-4">İletişim</h6>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2"></i>0212 555 0123</li>
-                        <li><i class="fas fa-envelope mr-2"></i>info@karotpro.com</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i>Denizli, Türkiye</li>
-                    </ul>
+                    <h6 class="text-lg font-bold mb-6 text-construction-orange">İletişim Bilgileri</h6>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div
+                                class="w-10 h-10 bg-construction-orange bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-phone text-construction-orange"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">0212 555 0123</div>
+                                <div class="text-gray-400 text-sm">Sabit Hat</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div
+                                class="w-10 h-10 bg-construction-orange bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-envelope text-construction-orange"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">info@karotpro.com</div>
+                                <div class="text-gray-400 text-sm">E-posta</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div
+                                class="w-10 h-10 bg-construction-orange bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-map-marker-alt text-construction-orange"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Denizli, Türkiye</div>
+                                <div class="text-gray-400 text-sm">Merkez Ofis</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2025 KarotPro. Tüm hakları saklıdır.</p>
+
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2025 KarotPro. Tüm hakları saklıdır.
+                        <span class="text-construction-orange font-semibold">Profesyonel Karot Delim Hizmetleri</span>
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-white transition duration-300">Gizlilik Politikası</a>
+                        <a href="#" class="hover:text-white transition duration-300">Kullanım Şartları</a>
+                        <a href="#" class="hover:text-white transition duration-300">Çerez Politikası</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -402,7 +867,7 @@
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
@@ -412,51 +877,83 @@
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                
+                const icon = question.querySelector('i:last-child');
+
                 // Close all other FAQs
                 faqQuestions.forEach(otherQuestion => {
                     if (otherQuestion !== question) {
                         const otherAnswer = otherQuestion.nextElementSibling;
-                        const otherIcon = otherQuestion.querySelector('i');
+                        const otherIcon = otherQuestion.querySelector('i:last-child');
                         otherAnswer.classList.add('hidden');
                         otherIcon.classList.remove('rotate-180');
                     }
                 });
-                
+
                 // Toggle current FAQ
                 answer.classList.toggle('hidden');
                 icon.classList.toggle('rotate-180');
             });
         });
 
-        // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // Form submission with animation
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Basic form validation
             const name = this.name.value.trim();
             const phone = this.phone.value.trim();
             const email = this.email.value.trim();
             const privacy = this.privacy.checked;
-            
+
             if (!name || !phone || !email || !privacy) {
+                // Show error animation
+                const form = this;
+                form.classList.add('animate-pulse');
+                setTimeout(() => form.classList.remove('animate-pulse'), 1000);
+
                 alert('Lütfen zorunlu alanları doldurun ve gizlilik politikasını kabul edin.');
                 return;
             }
-            
-            // Simulate form submission
+
+            // Submit animation
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Gönderiliyor...';
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Gönderiliyor...';
             submitBtn.disabled = true;
-            
+            submitBtn.classList.add('bg-gray-500');
+            submitBtn.classList.remove('bg-gradient-to-r', 'from-construction-orange', 'to-red-600');
+
+            // Simulate form processing
             setTimeout(() => {
-                alert('Teşekkürler! Talebiniz alınmıştır. En kısa sürede size dönüş yapacağız.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                // Success animation
+                submitBtn.innerHTML = '<i class="fas fa-check-circle mr-3"></i>Başarıyla Gönderildi!';
+                submitBtn.classList.add('bg-green-600');
+                submitBtn.classList.remove('bg-gray-500');
+
+                // Show success message
+                const successDiv = document.createElement('div');
+                successDiv.className = 'mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl';
+                successDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-3 text-green-600"></i>
+                        <div>
+                            <strong>Teşekkürler!</strong> Talebiniz alınmıştır. 
+                            <br>En kısa sürede size dönüş yapacağız.
+                        </div>
+                    </div>
+                `;
+                this.appendChild(successDiv);
+
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-green-600');
+                    submitBtn.classList.add('bg-gradient-to-r', 'from-construction-orange', 'to-red-600');
+                    successDiv.remove();
+                }, 3000);
             }, 2000);
         });
 
@@ -473,6 +970,26 @@
                 }
             });
         });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card-hover').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
+
 </html>
